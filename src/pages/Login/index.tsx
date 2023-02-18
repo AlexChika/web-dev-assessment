@@ -18,10 +18,12 @@ const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 0px;
+
+  section {
+    /* border: 2px solid green; */
+  }
 
   @media screen and (min-width: 900px) {
     flex-direction: row;
-    padding: 30px;
   }
 `;

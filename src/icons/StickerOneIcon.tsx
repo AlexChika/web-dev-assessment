@@ -1,6 +1,6 @@
 import React from "react";
 
-const StickerOneIcon = () => {
+const StickerOneIcon = ({ color, class: cs }: IconType) => {
   return (
     <svg
       width="65"
@@ -8,6 +8,7 @@ const StickerOneIcon = () => {
       viewBox="0 0 65 65"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={cs}
     >
       <g clip-path="url(#clip0_0_77)">
         <rect width="65" height="65" rx="14" fill="#FEF0F2" />

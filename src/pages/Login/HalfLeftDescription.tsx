@@ -25,7 +25,7 @@ const HalfLeftDescription = () => {
         <ButtonsWrapperStyle>
           <ButtonsRowStyle>
             <small>
-              <StickerOneIcon />
+              <StickerOneIcon class="sticker" />
             </small>
 
             <div>
@@ -44,7 +44,7 @@ const HalfLeftDescription = () => {
 
           <ButtonsRowStyle>
             <small>
-              <StickerTwoIcon />
+              <StickerTwoIcon class="sticker" />
             </small>
 
             <div>
@@ -60,7 +60,7 @@ const HalfLeftDescription = () => {
 
           <ButtonsRowStyle>
             <small>
-              <StickerThreeIcon />
+              <StickerThreeIcon class="sticker" />
             </small>
 
             <div>
@@ -106,16 +106,25 @@ const HeadingStyle = styled.section`
   h2 {
     margin-top: 2rem;
     font-weight: 700;
-    font-size: 3rem;
-    line-height: 4.8rem;
+    font-size: 2.4rem;
+    line-height: 3rem;
     color: ${({ theme }) => theme.primaryDark};
   }
-
   p {
     margin-top: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     letter-spacing: 0.3px;
     color: ${({ theme }: any) => theme.secondaryDark};
+  }
+
+  @media screen and (min-width: 500px) {
+    h2 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
   }
 `;
 
@@ -139,27 +148,32 @@ const ButtonsRowStyle = styled.section`
     justify-content: space-between;
 
     span {
-      width: calc(100% - 40px);
+      width: calc(100% - 30px);
     }
+  }
+
+  .sticker {
+    width: 50px;
+    height: 50px;
   }
 
   .icon {
     color: #f9c320;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     align-self: center;
     display: none;
   }
 
   h3 {
     font-weight: 500;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: ${({ theme }) => theme.tertiaryDark};
   }
 
   p {
     color: ${({ theme }) => theme.gray};
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     padding-top: 3px;
   }
 
@@ -175,5 +189,25 @@ const ButtonsRowStyle = styled.section`
   }
   &:hover .icon {
     display: block;
+  }
+
+  @media screen and (min-width: 500px) {
+    h3 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    .icon {
+      width: 25px;
+      height: 25px;
+    }
+
+    .sticker {
+      width: 64px;
+      height: 64px;
+    }
   }
 `;

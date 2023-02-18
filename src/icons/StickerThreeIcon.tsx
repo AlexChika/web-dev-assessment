@@ -1,8 +1,9 @@
 import React from "react";
 
-const StickerThreeIcon = () => {
+const StickerThreeIcon = ({ color, class: cs }: IconType) => {
   return (
     <svg
+      className={cs}
       width="65"
       height="65"
       viewBox="0 0 65 65"
