@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import HalfLeftDescription from "./HalfLeftDescription";
-import LoginForm from "./LoginForm";
+import HalfLeftDescription from "../components/login/HalfLeftDescription";
+import LoginForm from "../components/login/LoginForm";
 
 const LoginPage = () => {
   return (
@@ -18,10 +18,6 @@ const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  section {
-    /* border: 2px solid green; */
-  }
 
   @media screen and (min-width: 900px) {
     flex-direction: row;

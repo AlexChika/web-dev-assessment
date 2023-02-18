@@ -10,7 +10,7 @@ const StickerOneIcon = ({ color, class: cs }: IconType) => {
       xmlns="http://www.w3.org/2000/svg"
       className={cs}
     >
-      <g clip-path="url(#clip0_0_77)">
+      <g clipPath="url(#clip0_0_77)">
         <rect width="65" height="65" rx="14" fill="#FEF0F2" />
         <g filter="url(#filter0_d_0_77)">
           <path
@@ -39,16 +39,16 @@ const StickerOneIcon = ({ color, class: cs }: IconType) => {
           <path
             d="M51.3333 58.0833L47.0256 62.4583L45.2308 60.6354L42 63.9167"
             stroke="#A8E39C"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M51.3334 61.5833V58.0833H47.8334"
             stroke="#A8E39C"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
       </g>

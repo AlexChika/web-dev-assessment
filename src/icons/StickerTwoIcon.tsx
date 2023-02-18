@@ -10,7 +10,7 @@ const StickerTwoIcon = ({ color, class: cs }: IconType) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_0_107)">
+      <g clipPath="url(#clip0_0_107)">
         <rect width="65" height="65" rx="14" fill="#E1F3FF" />
         <g filter="url(#filter0_d_0_107)">
           <path
@@ -40,7 +40,7 @@ const StickerTwoIcon = ({ color, class: cs }: IconType) => {
         height="64.4"
         rx="13.7"
         stroke="#B3E2FE"
-        stroke-width="0.6"
+        strokeWidth="0.6"
       />
       <defs>
         <filter
@@ -52,7 +52,7 @@ const StickerTwoIcon = ({ color, class: cs }: IconType) => {
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

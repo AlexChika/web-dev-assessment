@@ -86,7 +86,8 @@ const Wrapper = styled.section`
   width: 100%;
   max-width: 620px;
   margin: 0 auto;
-  padding: 0px 15px;
+  padding: 20px 15px;
+  order: 2;
 
   & > div {
     max-width: 500px;
@@ -95,6 +96,7 @@ const Wrapper = styled.section`
 
   @media screen and (min-width: 900px) {
     width: 50%;
+    order: 1;
   }
 
   @media screen and (min-width: 1200px) {

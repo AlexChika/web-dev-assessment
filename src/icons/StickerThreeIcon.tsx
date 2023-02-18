@@ -10,10 +10,10 @@ const StickerThreeIcon = ({ color, class: cs }: IconType) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_0_141)">
+      <g clipPath="url(#clip0_0_141)">
         <rect width="65" height="65" rx="14" fill="#FEF7E1" />
         <g filter="url(#filter0_d_0_141)">
-          <g clip-path="url(#clip1_0_141)">
+          <g clipPath="url(#clip1_0_141)">
             <path
               d="M8 18C8 14.6863 10.6863 12 14 12H51C54.3137 12 57 14.6863 57 18V77H8V18Z"
               fill="white"
@@ -59,7 +59,7 @@ const StickerThreeIcon = ({ color, class: cs }: IconType) => {
         height="64.4"
         rx="13.7"
         stroke="#FDEDBE"
-        stroke-width="0.6"
+        strokeWidth="0.6"
       />
       <defs>
         <filter

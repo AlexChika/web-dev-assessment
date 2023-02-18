@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const LoginForm = () => {
   const [formInput, setFormInput] = useState({
@@ -7,7 +7,41 @@ const LoginForm = () => {
     password: "",
   });
 
-  function handleLogin() {}
+  function handleLogin(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    let valid = true;
+    const error = document.querySelector(`[data-name="button"]`);
+
+    if (formInput.email.trim().length < 3 || formInput.password.length < 3) {
+      valid = false;
+    }
+
+    if (valid) {
+      return;
+    }
+
+    error!.textContent = "Please input atleast three characters";
+  }
+
+  function handleFormOnchange(e: ChangeEvent<HTMLInputElement>) {
+    let name = e.target.name;
+    let value = e.target.value;
+    let error = document.querySelector(`[data-name="${name}"]`);
+
+    setFormInput({
+      ...formInput,
+      [name]: value,
+    });
+
+    error!.textContent = "";
+
+    if (name === "email" && value.trim().length < 3) {
+      error!.textContent = "please input a dummy email";
+    }
+    if (name === "password" && value.trim().length < 3) {
+      error!.textContent = "please input a dummy passwoed";
+    }
+  }
 
   return (
     <Wrapper>
@@ -22,25 +56,40 @@ const LoginForm = () => {
             <label htmlFor="email">Email</label>
             <article>
               <div>
-                <input id="email" name="email" type="email" />
+                <input
+                  onChange={handleFormOnchange}
+                  value={formInput.email}
+                  id="email"
+                  name="email"
+                  type="email"
+                />
                 <span></span>
               </div>
             </article>
-            <small className="error"></small>
+            <small data-name="email" className="error"></small>
           </FormInput>
 
           <FormInput>
             <label htmlFor="password">Password</label>
             <article>
               <div>
-                <input id="password" name="password" type="text" />
+                <input
+                  value={formInput.password}
+                  onChange={handleFormOnchange}
+                  id="password"
+                  name="password"
+                  type="text"
+                />
                 <span></span>
               </div>
             </article>
-            <small className="error"></small>
+            <small data-name="password" className="error"></small>
           </FormInput>
 
-          <button type="submit">Login</button>
+          <Button>
+            <button type="submit">Login</button>
+            <small data-name="button"></small>
+          </Button>
         </div>
       </form>
     </Wrapper>
@@ -51,11 +100,13 @@ export default LoginForm;
 
 const Wrapper = styled.section`
   background-color: #fccbd3;
+  padding: 0px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 100vh;
+  order: 1;
 
   form {
     max-width: 600px;
@@ -75,20 +126,9 @@ const Wrapper = styled.section`
     }
   }
 
-  button {
-    background: #1cc578;
-    border-radius: 40px;
-    height: 60px;
-    width: 100%;
-    border: none;
-    outline: none;
-    color: white;
-    font-weight: 500;
-    font-size: 1.6rem;
-  }
-
   @media screen and (min-width: 900px) {
     width: 50%;
+    order: 2;
   }
 
   @media screen and (min-width: 1200px) {
@@ -154,6 +194,28 @@ const FormInput = styled.div`
 
   small {
     color: tomato;
+    display: block;
     height: 10px;
+  }
+`;
+
+const Button = styled.div`
+  button {
+    background: #1cc578;
+    border-radius: 40px;
+    height: 60px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1.6rem;
+  }
+
+  small {
+    display: block;
+    height: 10px;
+    color: tomato;
+    text-align: center;
   }
 `;
