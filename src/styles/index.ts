@@ -1,21 +1,30 @@
 import { createGlobalStyle } from "styled-components";
 
-const theme = {
+// few colors are not here beacuse they were used scantly
+const theme: ThemeType = {
   primaryDark: "#1A1A1A",
   secondaryDark: "#595959",
   tertiaryDark: "#858585",
+
   gray: "#A3A3A3",
+  secondaryGray: "#A3A3A3",
+  primaryGray: "#F7F7F7",
+  tertiaryGray: "#F5F5F5",
+
   mediumDark: " #73798C",
+  primaryGreen: "#1cc578",
+  primaryRed: "#e60a2b",
+  secondaryRed: "#FEE7EA",
+  tertiaryRed: "#feebee",
 };
 
 const GlobalStyle = createGlobalStyle`
-/* Global styles */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family: "Manrope";
-
+    font-weight:400;
 }
 
 html {
@@ -24,29 +33,6 @@ html {
 
 body{
 font-size: 1.6rem;
-}
-
-/* utilities */
-.f{
-    display:flex;
-}
-.j-center{
-justify-content:center;
-}
-.a-center{
-    align-items:center
-}
-.j-between{
-justify-content:space-between;
-}
-.j-around{
-    justify-content:space-around;
-}
-
-.f-center{
-    display:flex;
-    align-items:center;
-    justify-content:center;
 }
 
 

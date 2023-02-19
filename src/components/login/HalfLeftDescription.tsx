@@ -110,13 +110,13 @@ const HeadingStyle = styled.section`
     font-weight: 700;
     font-size: 2.4rem;
     line-height: 3rem;
-    color: ${({ theme }) => theme.primaryDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.primaryDark};
   }
   p {
     margin-top: 1rem;
     font-size: 1.5rem;
     letter-spacing: 0.3px;
-    color: ${({ theme }: any) => theme.secondaryDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.secondaryDark};
   }
 
   @media screen and (min-width: 500px) {
@@ -170,11 +170,11 @@ const ButtonsRowStyle = styled.section`
   h3 {
     font-weight: 500;
     font-size: 1.8rem;
-    color: ${({ theme }) => theme.tertiaryDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.tertiaryDark};
   }
 
   p {
-    color: ${({ theme }) => theme.gray};
+    color: ${({ theme }: { theme: ThemeType }) => theme.gray};
     font-size: 1.3rem;
     padding-top: 3px;
   }
@@ -184,10 +184,10 @@ const ButtonsRowStyle = styled.section`
   }
 
   &:hover h3 {
-    color: ${({ theme }: any) => theme.primaryDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.primaryDark};
   }
   &:hover p {
-    color: ${({ theme }: any) => theme.mediumDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.mediumDark};
   }
   &:hover .icon {
     display: block;

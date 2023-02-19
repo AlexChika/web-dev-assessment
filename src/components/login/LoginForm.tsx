@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { CheckCircleIcon, EyeIcon } from "../../icons";
 
 const LoginForm = () => {
+  const [showPassword, setShowPasswod] = useState(false);
   const [formInput, setFormInput] = useState({
     email: "",
     password: "",
@@ -11,6 +13,8 @@ const LoginForm = () => {
     e.preventDefault();
     let valid = true;
     const error = document.querySelector(`[data-name="button"]`);
+
+    error!.textContent = "";
 
     if (formInput.email.trim().length < 3 || formInput.password.length < 3) {
       valid = false;
@@ -26,6 +30,8 @@ const LoginForm = () => {
   function handleFormOnchange(e: ChangeEvent<HTMLInputElement>) {
     let name = e.target.name;
     let value = e.target.value;
+    const icon = e.target.nextElementSibling?.querySelector("svg");
+
     let error = document.querySelector(`[data-name="${name}"]`);
 
     setFormInput({
@@ -33,14 +39,32 @@ const LoginForm = () => {
       [name]: value,
     });
 
+    // reset all
     error!.textContent = "";
+    icon!.classList.remove("active");
 
+    // set error texts
     if (name === "email" && value.trim().length < 3) {
       error!.textContent = "please input a dummy email";
+      return;
     }
     if (name === "password" && value.trim().length < 3) {
       error!.textContent = "please input a dummy passwoed";
+      return;
     }
+    icon!.classList.add("active");
+  }
+
+  function handleHidePassword(e: React.MouseEvent<HTMLSpanElement>) {
+    let icon = e.currentTarget.querySelector("svg");
+
+    if (!showPassword) {
+      icon!.classList.add("show");
+    } else {
+      icon!.classList.remove("show");
+    }
+
+    setShowPasswod(!showPassword);
   }
 
   return (
@@ -59,11 +83,14 @@ const LoginForm = () => {
                 <input
                   onChange={handleFormOnchange}
                   value={formInput.email}
+                  placeholder="youremail@example.com"
                   id="email"
                   name="email"
                   type="email"
                 />
-                <span></span>
+                <span>
+                  <CheckCircleIcon class="icon check" color="green" />
+                </span>
               </div>
             </article>
             <small data-name="email" className="error"></small>
@@ -76,11 +103,14 @@ const LoginForm = () => {
                 <input
                   value={formInput.password}
                   onChange={handleFormOnchange}
+                  placeholder="Enter your password"
                   id="password"
                   name="password"
-                  type="text"
+                  type={showPassword ? "text" : "password"}
                 />
-                <span></span>
+                <span onClick={handleHidePassword}>
+                  <EyeIcon class="icon eye" />
+                </span>
               </div>
             </article>
             <small data-name="password" className="error"></small>
@@ -140,13 +170,13 @@ const Heading = styled.div`
   margin-bottom: 20px;
 
   h3 {
-    color: ${({ theme }) => theme.primaryDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.primaryDark};
     font-weight: 600;
     font-size: 2.4rem;
   }
 
   p {
-    color: ${({ theme }) => theme.tertiaryDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.tertiaryDark};
     font-size: 1.6rem;
     padding: 5px 0px;
   }
@@ -159,7 +189,7 @@ const FormInput = styled.div`
   label {
     font-weight: 500;
     font-size: 1.6rem;
-    color: ${({ theme }) => theme.primaryDark};
+    color: ${({ theme }: { theme: ThemeType }) => theme.primaryDark};
   }
 
   article {
@@ -176,15 +206,50 @@ const FormInput = styled.div`
       height: 55px;
       margin: 0 auto;
       border-radius: 8px;
-      border: 1px solid ${({ theme }) => theme.primaryDark};
+      border: 1px solid
+        ${({ theme }: { theme: ThemeType }) => theme.primaryDark};
     }
 
     input {
       outline: none;
-      border-radius: 8px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
       border: none;
       flex: 1;
       padding: 0px 10px;
+      font-size: 1.6rem;
+    }
+
+    span {
+      display: flex;
+      background-color: white;
+      align-items: center;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+
+      .icon {
+        //general icon styling
+        width: 35px;
+        height: 35px;
+        padding: 0px 5px;
+        opacity: 0;
+      }
+
+      .icon.active {
+        //if icon is active
+        opacity: 1;
+      }
+
+      .icon.check {
+        //differet style for check icon
+        width: 30px;
+        height: 30px;
+      }
+
+      .icon.eye.active.show {
+        //if eye icon is active and show is toggled
+        color: ${({ theme }: { theme: ThemeType }) => theme.primaryDark};
+      }
     }
   }
 
@@ -201,7 +266,7 @@ const FormInput = styled.div`
 
 const Button = styled.div`
   button {
-    background: #1cc578;
+    background: ${({ theme }: { theme: ThemeType }) => theme.primaryGreen};
     border-radius: 40px;
     height: 60px;
     width: 100%;

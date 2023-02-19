@@ -50,7 +50,7 @@ const StickerTwoIcon = ({ color, class: cs }: IconType) => {
           width="69"
           height="85"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix

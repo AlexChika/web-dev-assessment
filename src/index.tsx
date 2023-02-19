@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import GlobalStyle from './styles';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.server";
+import AuthProvider from "./Auth/Context";
+import GlobalStyle from "./styles";
+
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <AuthProvider>
+      <BrowserRouter>
+        <GlobalStyle />
+        <App isAuthenticated={true} />
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );
-
-
