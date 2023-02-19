@@ -5,20 +5,23 @@ import { ThemeProvider } from "styled-components";
 import LoginPage from "./pages/Login.server";
 import HomePage from "./pages/Home.server";
 import { theme } from "./styles";
+import { Auth } from "./Auth/Context";
 
 // ....................app.........
-type Props = {
-  isAuthenticated: boolean;
-};
 
-function App({ isAuthenticated }: Props) {
+function App() {
+  const state = Auth();
   return (
     <ThemeProvider theme={theme}>
       <Routes>
         <Route
           path="/"
           element={
-            isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />
+            state?.isLoginValid ? (
+              <HomePage />
+            ) : (
+              <Navigate to="/login" replace />
+            )
           }
         ></Route>
         <Route path="/login" element={<LoginPage />} />

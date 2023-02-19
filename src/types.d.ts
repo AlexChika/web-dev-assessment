@@ -24,13 +24,20 @@ type CompanyType = {
   name: string;
 };
 
-type UserType = {
+type LoginInfoType = {
   email: string;
   password: string;
-  validateAt: string;
+  validatedAt: string;
+};
+
+type StateType = {
+  user: LoginInfoType | null;
+  isLoginValid: boolean;
 };
 
 type ContextType = {
-  user: UserType | null;
-  setUser: Dispatch<React.SetStateAction<null | UserType>>;
+  user: LoginInfoType | null;
+  isLoginValid: boolean;
+  setUser: SetUser;
 };
+type SetUser = (user: LoginInfoType) => void;

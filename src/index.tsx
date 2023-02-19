@@ -1,3 +1,19 @@
+/* ------------- WEB DEV TEST ------------ */
+/*
+(1) Two UI components found at / and /login
+    Trace Components to page/home and page/login
+
+(2) Integrate Graph Api link. Graph query is made
+    at Content.tsx. Trace component to /components/home/content.tsx
+
+(3) Login Screen with dummy user name component found    at /components/login/loginForm.tsx
+
+(4) Security Login! both security login and login details are stored on the Auth/context file
+
+
+// this project uses styled components to make html easily inspectable. Tailwindcss would have been my preffered option
+*/
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -21,7 +37,7 @@ root.render(
       <AuthProvider>
         <BrowserRouter>
           <GlobalStyle />
-          <App isAuthenticated={true} />
+          <App />
         </BrowserRouter>
       </AuthProvider>
     </ApolloProvider>

@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { CheckCircleIcon, EyeIcon } from "../../icons";
+import { Auth } from "../../Auth/Context";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+  const state = Auth();
+  const navigate = useNavigate();
   const [showPassword, setShowPasswod] = useState(false);
   const [formInput, setFormInput] = useState({
     email: "",
@@ -21,6 +25,14 @@ const LoginForm = () => {
     }
 
     if (valid) {
+      const userInfo = {
+        email: formInput.email,
+        password: formInput.password,
+        validatedAt: new Date().toISOString(),
+      };
+
+      state!.setUser(userInfo);
+      navigate("/");
       return;
     }
 
