@@ -21,7 +21,7 @@ const Content = () => {
   const company: CompanyType = data.company;
   const { name, cto, ceo } = company;
 
-  function getCompanyInitial(text?: string) {
+  function getCompanyInitial(text: string) {
     let name = text || "MC";
     let initial;
     const words = name.split(" ");
@@ -76,6 +76,11 @@ const Wrapper = styled.section`
     margin-top: 0px;
     max-width: unset;
     min-height: calc(100vh - 130px);
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 100px;
+    padding-top: 100px;
   }
 
   .heading {

@@ -6,24 +6,25 @@ import {
   useEffect,
 } from "react";
 
-import reducer from "./reducer";
-import { types } from "./reducer";
+import reducer from "./reducer"; //the reducer function
+import { types } from "./reducer"; //action types
 const AppContext = createContext<ContextType | null>(null);
 
 const initialState: StateType = {
   user: null,
   isLoginValid: false,
 };
+
 function AuthProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // func sets user login detail to state (used at LoginForm.tsx)
   function setUser(user: LoginInfoType) {
     validateUser(user);
     dispatch({ type: types.SETUSER, payload: user });
   }
 
-  console.log(state.isLoginValid);
-
+  // the validation logic
   function validateUser(user: LoginInfoType) {
     if (!user) return;
     const dateString = user.validatedAt;
@@ -37,7 +38,6 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!state.user) return;
-    console.log(state.isLoginValid);
 
     function call() {
       if (validateUser(state.user)) {

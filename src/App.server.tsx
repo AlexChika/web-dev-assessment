@@ -1,5 +1,3 @@
-// This Project utilizes Styled-components for styling and styledJs abstraction code structure
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import LoginPage from "./pages/Login.server";
@@ -8,7 +6,6 @@ import { theme } from "./styles";
 import { Auth } from "./Auth/Context";
 
 // ....................app.........
-
 function App() {
   const state = Auth();
   return (

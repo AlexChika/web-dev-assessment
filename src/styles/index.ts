@@ -34,13 +34,6 @@ html {
 body{
 font-size: 1.6rem;
 }
-
-
-
-
-.red{
-    border:2px solid red;
-}
 `;
 
 export default GlobalStyle;

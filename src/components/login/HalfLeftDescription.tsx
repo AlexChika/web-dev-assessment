@@ -92,6 +92,7 @@ const Wrapper = styled.section`
   & > div {
     max-width: 500px;
     margin: 0 auto;
+    padding: 0px 15px;
   }
 
   @media screen and (min-width: 900px) {
@@ -112,6 +113,7 @@ const HeadingStyle = styled.section`
     line-height: 3rem;
     color: ${({ theme }: { theme: ThemeType }) => theme.primaryDark};
   }
+
   p {
     margin-top: 1rem;
     font-size: 1.5rem;
@@ -199,7 +201,7 @@ const ButtonsRowStyle = styled.section`
     }
 
     p {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
 
     .icon {

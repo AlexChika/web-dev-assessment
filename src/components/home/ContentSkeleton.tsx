@@ -8,15 +8,15 @@ const ContentSkeleton = () => {
         <span></span>
       </Header>
 
-      <CEO>
+      <Ceo>
         <p></p>
         <span></span>
-      </CEO>
+      </Ceo>
 
-      <CEO>
+      <Ceo>
         <p></p>
         <span></span>
-      </CEO>
+      </Ceo>
     </Wrapper>
   );
 };
@@ -39,6 +39,11 @@ const Wrapper = styled.div`
     margin-top: 0px;
     max-width: unset;
     min-height: calc(100vh - 130px);
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 100px;
+    padding-top: 100px;
   }
 
   @keyframes skeleton {
@@ -79,7 +84,7 @@ const Header = styled.div`
   }
 `;
 
-const CEO = styled.div`
+const Ceo = styled.div`
   margin-top: 30px;
   p {
     width: 100%;
