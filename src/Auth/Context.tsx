@@ -32,7 +32,6 @@ function AuthProvider({ children }: { children: ReactNode }) {
     const timePast = currenTime - loggedInTime;
     const isLoginValid = timePast < 60 * 2 * 1000;
     dispatch({ type: types.VALIDATEUSER, payload: isLoginValid });
-    console.log(isLoginValid);
     return isLoginValid;
   }
 
@@ -49,6 +48,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     call();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.user]);
 
   return (
