@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useQuery, gql } from "@apollo/client";
+import ContentSkeleton from "./ContentSkeleton";
 
 const Content = () => {
   const COMPANY_QUERY = gql`
@@ -14,11 +15,11 @@ const Content = () => {
   const { data } = useQuery(COMPANY_QUERY);
 
   if (!data) {
-    return <></>;
+    return <ContentSkeleton />;
   }
 
   const company: CompanyType = data.company;
-  const { name, cto, ceo } = company || {};
+  const { name, cto, ceo } = company;
 
   function getCompanyInitial(text?: string) {
     let name = text || "MC";
