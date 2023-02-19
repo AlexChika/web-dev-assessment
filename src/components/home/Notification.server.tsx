@@ -75,8 +75,10 @@ const Wrapper = styled.div`
     width: max-content;
     border-radius: 30px;
     padding: 6px 16px;
+
     span {
       color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+      margin-left: 5px;
     }
   }
 
