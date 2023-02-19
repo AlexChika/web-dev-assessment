@@ -44,10 +44,9 @@ const Wrapper = styled.section`
   border: 1px solid #dde1e3;
   border-radius: 8px;
   width: 100%;
-  min-height: calc(100vh - 130px);
   margin-top: 30px;
   max-width: 600px;
-  padding: 10px;
+  padding: 20px;
 
   @media screen and (min-width: 425px) {
     padding: 30px;
@@ -56,6 +55,7 @@ const Wrapper = styled.section`
   @media screen and (min-width: 768px) {
     margin-top: 0px;
     max-width: unset;
+    min-height: calc(100vh - 130px);
   }
 
   .heading {
