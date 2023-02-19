@@ -1,8 +1,27 @@
 import styled from "styled-components";
+import { useQuery, gql } from "@apollo/client";
 
 const Content = () => {
+  const COMPANY_QUERY = gql`
+    {
+      company {
+        ceo
+        cto
+        name
+      }
+    }
+  `;
+  const { data } = useQuery(COMPANY_QUERY);
+
+  if (!data) {
+    return <></>;
+  }
+
+  const company: CompanyType = data.company;
+  const { name, cto, ceo } = company || {};
+
   function getCompanyInitial(text?: string) {
-    let name = "CompanyName";
+    let name = text || "MC";
     let initial;
     const words = name.split(" ");
     if (words.length < 2) {
@@ -18,21 +37,21 @@ const Content = () => {
       {/* company name */}
       <div className="heading">
         <div className="avatar">
-          <span className="initial">{getCompanyInitial()}</span>
+          <span className="initial">{getCompanyInitial(name)}</span>
         </div>
-        <h3 className="company__name">Company Name</h3>
+        <h3 className="company__name">{name}</h3>
       </div>
 
       {/* Ceo name */}
       <div className="ceo">
         <p className="title">CEO</p>
-        <h3 className="name">CEO Name</h3>
+        <h3 className="name">{ceo}</h3>
       </div>
 
       {/* cto name */}
       <div className="ceo">
         <p className="title">CTO</p>
-        <h3 className="name">CTO Name</h3>
+        <h3 className="name">{cto}</h3>
       </div>
     </Wrapper>
   );

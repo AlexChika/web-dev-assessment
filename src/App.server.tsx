@@ -6,9 +6,11 @@ import LoginPage from "./pages/Login.server";
 import HomePage from "./pages/Home.server";
 import { theme } from "./styles";
 
+// ....................app.........
 type Props = {
   isAuthenticated: boolean;
 };
+
 function App({ isAuthenticated }: Props) {
   return (
     <ThemeProvider theme={theme}>
@@ -19,7 +21,6 @@ function App({ isAuthenticated }: Props) {
             isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />
           }
         ></Route>
-        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </ThemeProvider>

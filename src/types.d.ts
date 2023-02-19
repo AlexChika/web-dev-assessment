@@ -18,6 +18,12 @@ type ThemeType = {
   tertiaryRed: string;
 };
 
+type CompanyType = {
+  ceo: string;
+  cto: string;
+  name: string;
+};
+
 type UserType = {
   email: string;
   password: string;

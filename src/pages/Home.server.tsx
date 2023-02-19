@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Content from "../components/home/Content.server";
+import Content from "../components/home/Content";
 import Header from "../components/home/Header.server";
 import Notification from "../components/home/Notification.server";
 
