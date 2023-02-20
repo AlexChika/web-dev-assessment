@@ -10,6 +10,8 @@
 
 (4) Security Login! both security login and login details are stored on the Auth/context.tsx file
 
+4a//I used cookies to persist state or browser refresh and make sure 2min is 2min
+
 
 // this project uses styled components to make html easily inspectable. Tailwindcss would have been my preffered option
 */
