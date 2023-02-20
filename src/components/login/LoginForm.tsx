@@ -230,6 +230,7 @@ const FormInput = styled.div`
       flex: 1;
       padding: 0px 10px;
       font-size: 1.6rem;
+      background-color: white;
     }
 
     span {

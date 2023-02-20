@@ -5,14 +5,15 @@ import {
   useContext,
   useEffect,
 } from "react";
+import { getCookie, setCookie, isUserValid } from "../utils/cookies";
 
 import reducer from "./reducer"; //the reducer function
 import { types } from "./reducer"; //action types
 const AppContext = createContext<ContextType | null>(null);
 
 const initialState: StateType = {
-  user: null,
-  isLoginValid: false,
+  user: getCookie(),
+  isLoginValid: getCookie() ? isUserValid(getCookie()).isLoginValid : false,
 };
 
 function AuthProvider({ children }: { children: ReactNode }) {
@@ -20,30 +21,44 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
   // func sets user login detail to state (used at LoginForm.tsx)
   function setUser(user: LoginInfoType) {
-    validateUser(user);
+    dispatch({
+      type: types.VALIDATEUSER,
+      payload: isUserValid(user).isLoginValid,
+    });
+    setCookie(user);
     dispatch({ type: types.SETUSER, payload: user });
   }
 
-  // the validation logic
-  function validateUser(user: LoginInfoType) {
-    if (!user) return;
-    const dateString = user.validatedAt;
-    const currenTime = new Date().getTime();
-    const loggedInTime = new Date(dateString).getTime();
-    const timePast = currenTime - loggedInTime;
-    const isLoginValid = timePast < 60 * 2 * 1000;
-    dispatch({ type: types.VALIDATEUSER, payload: isLoginValid });
-    return isLoginValid;
-  }
+  // app intializer effect not really needed
+  useEffect(() => {
+    const user = getCookie();
 
+    if (user) {
+      dispatch({
+        type: types.VALIDATEUSER,
+        payload: isUserValid(user).isLoginValid,
+      });
+    }
+  }, []);
+
+  // effect tracks users login time
   useEffect(() => {
     if (!state.user) return;
+
+    function validateUser(user: LoginInfoType) {
+      let isValid = isUserValid(user).isLoginValid;
+      dispatch({
+        type: types.VALIDATEUSER,
+        payload: isValid,
+      });
+      return isValid;
+    }
 
     function call() {
       if (validateUser(state.user)) {
         setTimeout(() => {
           call();
-        }, 60 * 2 * 1000);
+        }, isUserValid(state.user).timeRemaining);
       }
     }
 

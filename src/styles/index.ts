@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     font-family: "Manrope";
     font-weight:400;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
